@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// import "Product.dart";
 
 void main() => runApp(MyApp());
 
@@ -15,7 +16,17 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class Karu extends StatelessWidget {
+class Karu extends StatefulWidget {
+  const Karu({super.key});
+
+  @override
+  State<Karu> createState() => _KaruState();
+}
+
+class _KaruState extends State<Karu> {
+  TextEditingController _email = TextEditingController();
+  TextEditingController _password = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,6 +64,8 @@ class Karu extends StatelessWidget {
                   SizedBox(
                     width: 270,
                     child: TextField(
+                      controller: _email,
+                      keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         hintText: 'Email',
@@ -69,6 +82,8 @@ class Karu extends StatelessWidget {
                   SizedBox(
                     width: 270,
                     child: TextField(
+                      controller: _password,
+                      obscureText: true,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         hintText: 'Password',
@@ -105,7 +120,8 @@ class Karu extends StatelessWidget {
                     textColor: Colors.white,
                     height: 50,
                     onPressed: () {
-                      print('sign in');
+                      print("Email is : " + _email.text);
+                      print("Password is : " + _password.text);
                     },
                     child: Text("login"),
                   ),
